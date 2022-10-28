@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Series = () => {
   const { mainlight } = useParams()
@@ -19,23 +22,28 @@ const Series = () => {
     <>
       <div>
         <h1> {mainlight} </h1>
-        <div className="d-flex flex-row">
 
-          {
-            data?.map((value, index) => {
-              return (
-                <div className="">
-                  <img src={value.url} alt="Iamge" className='img-fluid' />
-                  <h3>
-                    <Link to="/products" state={{ products: value.products }}>
-                      {value.series}
+        <Container className="series_div">
+          <Row>
+            {
+              data?.map((value, index) => {
+                return (
+                  <Col lg="3" sm="6" xs="6" className="individual_Series">
+                    <Link to="/products" state={{ products: value.products, series_name: value.series }}>
+                      <center>
+                        <img src={value.url} alt="Iamge" className='img-fluid' />
+                      </center>
+                      <h3 className='mt-3 series_title text-center'>
+                        {value.series}
+                      </h3>
                     </Link>
-                  </h3>
-                </div>
-              )
-            })
-          }
-        </div>
+                  </Col>
+                )
+              })
+            }
+          </Row>
+        </Container>
+
       </div>
     </>
   )
