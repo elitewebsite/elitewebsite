@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-3">
               <img src={EliteLogo} alt="Logo" height="80px" width="160px" />
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laboriosam quas quisquam eaque error officia.</p>
+              <p>The Company brings you to the most vivid and exquisite luxury lighting series you’ve ever laid your eyes on. Professional event lighting manufacturer and trader.</p>
             </div>
 
             <div className="col-lg-2 useful_links">

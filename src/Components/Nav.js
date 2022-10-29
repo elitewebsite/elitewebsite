@@ -11,11 +11,11 @@ function NavBar() {
 
     const [main, setMain] = useState([])
 
-    useEffect(() => {
-        axios.get('https://elitebackend.vercel.app/admincrud/getlightcategory').then((res) => {
-            setMain(res.data)
-        })
-    }, [])
+    // useEffect(() => {
+    //     axios.get('https://elitebackend.vercel.app/admincrud/getlightcategory').then((res) => {
+    //         setMain(res.data)
+    //     })
+    // }, [])
 
     return (
         <>
