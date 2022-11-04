@@ -11,6 +11,7 @@ import { Singleproduct } from './Components/Singleproduct';
 import Gallery from './Components/Gallery';
 import Blogs from './Components/Blogs';
 import Contact from './Components/Contact'
+import Notfound from './Components/Notfound';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
 
       <Footer />

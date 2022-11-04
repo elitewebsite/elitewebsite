@@ -4,6 +4,8 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import mainlightBanner from '../images/mainlightBanner.png'
+import seriesBanner from '../images/product_banner.png'
 
 const Series = () => {
   const { mainlight } = useParams()
@@ -21,14 +23,25 @@ const Series = () => {
   return (
     <>
       <div>
-        <h1> {mainlight} </h1>
+        <Container fluid>
+          <Row>
+            <Col className="mainLight_banner">
+              <img src={mainlightBanner} alt="Image" class="img-fluid" />
+              <h1 className='mainLight_title'> {mainlight} </h1>
+            </Col>
+          </Row>
 
-        <Container className="series_div">
+          <Row>
+            <img src={seriesBanner} alt="Image" />
+          </Row>
+        </Container>
+
+        <Container>
           <Row>
             {
               data?.map((value, index) => {
                 return (
-                  <Col lg="3" sm="6" xs="6" className="individual_Series">
+                  <Col lg={3} sm={6} xs={6} className="individual_Series mt-3 mb-5">
                     <Link to="/products" state={{ products: value.products, series_name: value.series }}>
                       <center>
                         <img src={value.url} alt="Iamge" className='img-fluid' />

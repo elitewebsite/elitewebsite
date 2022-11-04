@@ -9,6 +9,8 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 import arrowIcon from '../images/right-arrow.png'
+import mainlightBanner from '../images/mainlightBanner.png'
+import backBanner from '../images/upper_banner.png'
 
 export const Singleproduct = () => {
     const { state } = useLocation()
@@ -23,20 +25,29 @@ export const Singleproduct = () => {
         }
     }, [state])
 
-    console.log(state)
     return (
-
         <>
-            <Container>
+            <Container fluid>
                 <Row>
+                    <Col className="singleProduct_banner">
+                        <img src={mainlightBanner} alt="Image" />
+                        <h2 className='singleProduct_title text-center mt-4 mb-5 text-uppercase'>{state.oneproduct.product_name}</h2>
+                    </Col>
+                </Row>
+            </Container>
+            
+            <Container fluid>
+                <Row className="carousel_row">
+                    <center>
+                        <h2 className="mt-4 mb-4">{state.oneproduct.product_name}</h2>
+                    </center>
                     <Col>
-                        <h2 className='text-center mt-4 mb-5'>{state.oneproduct.product_name}</h2>
                         <center>
-                            <Carousel showStatus={false} thumbWidth={window.innerWidth <= 400 ? 70 : 120} centerMode={true} centerSlidePercentage={99} showArrows={true} infiniteLoop={true} autoPlay={true} interval={2000}>
+                            <Carousel showStatus={false} thumbWidth={window.innerWidth <= 380 ? 60 : 95} centerMode={true} centerSlidePercentage={99} showArrows={false} infiniteLoop={true} autoPlay={true} interval={4000} showIndicators={false}>
                                 {
                                     state.oneproduct.images?.map((val) => {
                                         return (
-                                            <div style={{ margin: "auto" }} className="carousel_imgs">
+                                            <div className="carousel_imgs">
                                                 <img src={val} className="img-fluid" />
                                             </div>
                                         )
@@ -47,21 +58,17 @@ export const Singleproduct = () => {
                     </Col>
                 </Row>
 
-                <Row className='mt-5'>
+                <Row className='mt-4'>
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                        <Row>
+                        <Row >
                             <Col sm={3}>
-                                <Nav variant="pills" className="flex-column">
+                                <Nav variant="tabs" className="flex-column" >
                                     <Nav.Item>
                                         <Nav.Link eventKey="first">Description</Nav.Link>
                                     </Nav.Item>
 
                                     <Nav.Item>
                                         <Nav.Link eventKey="second">Parameters</Nav.Link>
-                                    </Nav.Item>
-
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="third">Blogs</Nav.Link>
                                     </Nav.Item>
 
                                     <Nav.Item>
@@ -74,7 +81,8 @@ export const Singleproduct = () => {
 
                                 </Nav>
                             </Col>
-                            <Col sm={9} style={{border:"1px solid black", padding:"15px",marginBottom:"40px"}}>
+
+                            <Col sm={9} style={{ border: "1px solid black", padding: "15px", margin:"18px auto 40px", borderRadius:"15px" }}>
                                 <Tab.Content>
                                     <Tab.Pane eventKey="first">
                                         <p style={{ textAlign: "justify" }}>
@@ -103,12 +111,8 @@ export const Singleproduct = () => {
                                         }
                                     </Tab.Pane>
 
-                                    <Tab.Pane eventKey="third">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto eaque illo qui, debitis explicabo nam iste repellendus ipsa inventore sint!</p>
-                                    </Tab.Pane>
-
                                     <Tab.Pane eventKey="fourth">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto eaque illo qui, debitis explicabo nam iste repellendus ipsa inventore sint!</p>
+                                        <p>{state.oneproduct.news}</p>
                                     </Tab.Pane>
 
                                     <Tab.Pane eventKey="fifth">

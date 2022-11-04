@@ -11,17 +11,17 @@ function NavBar() {
 
     const [main, setMain] = useState([])
 
-    // useEffect(() => {
-    //     axios.get('https://elitebackend.vercel.app/admincrud/getlightcategory').then((res) => {
-    //         setMain(res.data)
-    //     })
-    // }, [])
+    useEffect(() => {
+        axios.get('https://elitebackend.vercel.app/admincrud/getlightcategory').then((res) => {
+            setMain(res.data)
+        })
+    }, [])
 
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand href="#home" className="ms-1">
+                    <Navbar.Brand href="#home" className="ms-1 header_nav">
                         <img src={EliteLogo} alt="Logo" height="58px" width="165px" />
                     </Navbar.Brand>
 

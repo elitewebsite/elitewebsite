@@ -7,9 +7,9 @@ import twitterIcon from '../images/twitter.png'
 const Footer = () => {
   return (
     <>
-        <div className="Container fluid footer_container">
+        <div className="Container fluid footer_container" style={{marginTop:"100px"}}>
           <div className="row">
-            <div className="col-lg-3">
+            <div className="col-lg-3 footer_logo">
               <img src={EliteLogo} alt="Logo" height="80px" width="160px" />
               <p>The Company brings you to the most vivid and exquisite luxury lighting series you’ve ever laid your eyes on. Professional event lighting manufacturer and trader.</p>
             </div>
