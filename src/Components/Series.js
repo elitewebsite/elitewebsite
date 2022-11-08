@@ -11,8 +11,9 @@ const Series = () => {
   const { mainlight } = useParams()
 
   const [data, setData] = useState([])
+  
   useEffect(() => {
-    axios.get(`https://elitebackend.vercel.app/admincrud/getall?mainlight=${mainlight}`).then((res) => {
+    axios.get(`https://elitebackend-sage.vercel.app/admincrud/getall?mainlight=${mainlight}`).then((res) => {
       setData(res.data)
     }).catch((err) => {
       console.log(err)
@@ -27,7 +28,7 @@ const Series = () => {
           <Row>
             <Col className="mainLight_banner">
               <img src={mainlightBanner} alt="Image" class="img-fluid" />
-              <h1 className='mainLight_title'> {mainlight} </h1>
+              <h1 className='mainLight_title text-capitalize'> {mainlight} </h1>
             </Col>
           </Row>
 
@@ -46,7 +47,7 @@ const Series = () => {
                       <center>
                         <img src={value.url} alt="Iamge" className='img-fluid' />
                       </center>
-                      <h3 className='mt-3 series_title text-center'>
+                      <h3 className='mt-3 series_title text-center text-capitalize'>
                         {value.series}
                       </h3>
                     </Link>

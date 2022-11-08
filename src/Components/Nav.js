@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import EliteLogo from '../images/elite_black_logo.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import EliteLogo from '../images/elite_black_logo.png'
 
 function NavBar() {
 
     const [main, setMain] = useState([])
 
     useEffect(() => {
-        axios.get('https://elitebackend.vercel.app/admincrud/getlightcategory').then((res) => {
+        axios.get('https://elitebackend-sage.vercel.app/admincrud/getlightcategory').then((res) => {
             setMain(res.data)
         })
     }, [])
@@ -20,8 +20,8 @@ function NavBar() {
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-                <Container>
-                    <Navbar.Brand href="#home" className="ms-1 header_nav">
+                <Container >
+                    <Navbar.Brand className="header_nav">
                         <img src={EliteLogo} alt="Logo" height="58px" width="165px" />
                     </Navbar.Brand>
 
@@ -62,11 +62,11 @@ function NavBar() {
                                 </Link>
                             </Nav.Link>
 
-                            <Nav.Link className="pe-4 fs-5">
+                            {/* <Nav.Link className="pe-4 fs-5">
                                 <Link to="/blogs">
                                     Blogs
                                 </Link>
-                            </Nav.Link>
+                            </Nav.Link> */}
 
                             <Nav.Link className="pe-4 fs-5">
                                 <Link to="/contact">
@@ -75,13 +75,9 @@ function NavBar() {
                             </Nav.Link>
                         </Nav>
 
-                        {/* <Nav>
-                            <Nav.Link href="#call">Call +91 1234567890</Nav.Link>
-                        </Nav> */}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
         </>
     );
 }

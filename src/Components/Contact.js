@@ -1,14 +1,28 @@
 import React from 'react'
+import axios from 'axios'
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/esm/Container';
 import Contacbanner from "../images/CarouselImages/contactus.jfif"
 import Getbanner from "../images/CarouselImages/getintouch.jfif"
 import Reachbanner from "../images/CarouselImages/reachiusat.jfif"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
+  const notify = (p, msg) => p ? toast.success(msg) : toast.error(msg);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formdata = new FormData(event.target);
+    const data = Object.fromEntries(formdata.entries());
+    axios.post('https://elitebackend.vercel.app/getfomdata/getformdetails', data).then((res) => {
+
+      notify(1, "Details Submitted Successfully..");
+    }).catch((err) => {
+      notify(0, "Something went wrong..!")
+    })
+  }
+
   return (
     <div>
       <div className="contact_banner">
@@ -82,15 +96,18 @@ const Contact = () => {
         </Container>
       </div>
       <div className="form_and_map">
-        <img src={Getbanner} alt="" />
+        <ToastContainer position="bottom-left" hideProgressBar="true" autoClose="6000" />
+        <img src={Getbanner} alt="Image" />
         <Container fluid>
           <Row className='gy-3'>
             <Col sm={6}>
-              <div className="form mt-4">
-                <input type="text" name="" placeholder='Enter your name' id="" />
-                <input type="email" name="" placeholder='Enter your email' id="" />
-                <input type="text" name="" placeholder="Type your message" id="message" />
-                <button type='submit'>Submit</button>
+              <div >
+                <form onSubmit={handleSubmit} className="form mt-4" autocomplete="off">
+                  <input type="text" name="name" placeholder='Enter your name' id="" required />
+                  <input type="email" name="email" placeholder='Enter your email' id="" required />
+                  <input type="text" name="message" placeholder="Type your message" id="message" required />
+                  <button type='submit'>Submit</button>
+                </form>
               </div>
             </Col>
             <Col sm={6}>

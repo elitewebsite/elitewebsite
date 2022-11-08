@@ -25,13 +25,16 @@ export const Singleproduct = () => {
         }
     }, [state])
 
+    console.log(state.oneproduct)
     return (
         <>
             <Container fluid>
                 <Row>
                     <Col className="singleProduct_banner">
                         <img src={mainlightBanner} alt="Image" />
-                        <h2 className='singleProduct_title text-center mt-4 mb-5 text-uppercase'>{state.oneproduct.product_name}</h2>
+                        <center>
+                            <h2 className='singleProduct_title text-center mt-4 mb-5 text-uppercase'>{state.oneproduct.product_name}</h2>
+                        </center>
                     </Col>
                 </Row>
             </Container>
@@ -58,7 +61,7 @@ export const Singleproduct = () => {
                     </Col>
                 </Row>
 
-                <Row className='mt-4'>
+                <Row className='mt-4 mb-3 pills_heading_row'>
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                         <Row >
                             <Col sm={3}>
@@ -73,6 +76,11 @@ export const Singleproduct = () => {
 
                                     <Nav.Item>
                                         <Nav.Link eventKey="fourth">News</Nav.Link>
+                                    </Nav.Item>
+
+
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="sixth">Download</Nav.Link>
                                     </Nav.Item>
 
                                     <Nav.Item>
@@ -95,7 +103,7 @@ export const Singleproduct = () => {
                                             state.oneproduct.info?.map((value) => {
                                                 return (
                                                     <div>
-                                                        <h4 className="product_desc_title"> <img src={arrowIcon} alt="Icon" /> {value.title}</h4>
+                                                        <h4 className="product_desc_title text-capitalize"> <img src={arrowIcon} alt="Icon" /> {value.title}</h4>
 
                                                         <p>{value.desc.split(",").map((val) => {
                                                             return (
@@ -120,6 +128,10 @@ export const Singleproduct = () => {
                                             src={`https://www.youtube.com/embed/${state.oneproduct.youtube.split('=')[1]}`}>
                                         </iframe>
                                     </Tab.Pane>
+
+                                    <Tab.Pane eventKey="sixth">
+                                        <a id="downloadable_pdf" href={state.oneproduct.pdflink} download target="_blank">Click Here to Download</a>
+                                    </Tab.Pane>
                                 </Tab.Content>
                             </Col>
                         </Row>
@@ -127,13 +139,6 @@ export const Singleproduct = () => {
                 </Row>
             </Container>
 
-            {/* <h1>Singleproduct info</h1>
-            <h1>{state.oneproduct.product_name}</h1>
-            <h1>{state.oneproduct.model_no}</h1>
-            <h1>{state.oneproduct.youtube}</h1>
-            <iframe width="420" height="315" frameborder="0" allowfullscreen
-                src={`https://www.youtube.com/embed/${state.oneproduct.youtube.split('=')[1]}`}>
-            </iframe> */}
         </>
     )
 }

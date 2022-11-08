@@ -24,7 +24,7 @@ const Products = () => {
                 <Row>
                     <Col className="mainLight_banner">
                         <img src={mainlightBanner} alt="Image" class="img-fluid" />
-                        <h1 className='mainLight_title'> {state?.series_name} </h1>
+                        <h1 className='mainLight_title text-capitalize'> {state?.series_name} </h1>
                     </Col>
                 </Row>
 
@@ -44,7 +44,7 @@ const Products = () => {
                                             <img src={val.images[0]} alt="Images" className="productImage"/>
                                         </center>
 
-                                        <h3 class="text-center product_title">{val.product_name}</h3>
+                                        <h3 class="text-center product_title text-capitalize">{val.product_name}</h3>
                                     </Link>
                                 </Col>
                             )
