@@ -103,7 +103,7 @@ export const Singleproduct = () => {
                                             state.oneproduct.info?.map((value) => {
                                                 return (
                                                     <div>
-                                                        <h4 className="product_desc_title text-capitalize"> <img src={arrowIcon} alt="Icon" /> {value.title}</h4>
+                                                        <h4 className="product_desc_title "> <img src={arrowIcon} alt="Icon" /> {value.title}</h4>
 
                                                         <p>{value.desc.split(",").map((val) => {
                                                             return (

@@ -15,7 +15,7 @@ const Contact = () => {
     event.preventDefault();
     const formdata = new FormData(event.target);
     const data = Object.fromEntries(formdata.entries());
-    axios.post('https://elitebackend.vercel.app/getfomdata/getformdetails', data).then((res) => {
+    axios.post('https://elitebackend-sage.vercel.app/getfomdata/getformdetails', data).then((res) => {
 
       notify(1, "Details Submitted Successfully..");
     }).catch((err) => {
