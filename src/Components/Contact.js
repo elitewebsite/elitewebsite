@@ -21,6 +21,11 @@ const Contact = () => {
     }).catch((err) => {
       notify(0, "Something went wrong..!")
     })
+
+    event.target.name.value="";
+    event.target.email.value="";
+    event.target.message.value="";
+
   }
 
   return (
@@ -85,7 +90,7 @@ const Contact = () => {
                   <p className='lower-title'>SHREE VINAYAK ELECTRICALS</p>
                   <p className='others'>Office No.4-5, 3rd Floor, Lohar Chawl, Kantilal M Sharma Marg, Kalbadevi, Mumbai. 400002
                   </p>
-                  <span> mailto:rakesh.eliteele@gmail.com
+                  <span> rakesh.eliteele@gmail.com
                   </span>
                   <p className='others'> 022 22050564 & +91 8369258669, +91 8888628880 </p>
                 </div>
