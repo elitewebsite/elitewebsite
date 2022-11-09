@@ -111,7 +111,7 @@ const Contact = () => {
                   <input type="text" name="name" placeholder='Enter your name' id="" required />
                   <input type="email" name="email" placeholder='Enter your email' id="" required />
                   <input type="text" name="message" placeholder="Type your message" id="message" required />
-                  <button type='submit'>Submit</button>
+                  <button type='submit'>Submit Details</button>
                 </form>
               </div>
             </Col>
