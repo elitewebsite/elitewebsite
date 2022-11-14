@@ -21,12 +21,16 @@ import { Link } from 'react-router-dom';
 const Home = ({ homeInfo }) => {
 
     const [show, setShow] = useState(false);
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState('');
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleChange = (gimg) => {
+    const [name, setName] = useState('');
+
+    const handleChange = (gimg,sname) => {
         setImage(gimg);
+        setName(sname);
         handleShow();
     }
 
@@ -147,33 +151,33 @@ const Home = ({ homeInfo }) => {
                     <h2 className='text-center mt-4' style={{ color: "#012e4d" }}>Gallery</h2>
                     <div className='image_gallery mt-4'>
                         <div>
-                            <img src={featuredProd1} onClick={() => { handleChange(featuredProd1) }} alt="Image" />
+                            <img src={featuredProd1} onClick={() => { handleChange(featuredProd1,'BSW 350') }} alt="Image" />
                             <h6 className="text-center fs-4 mt-2">BSW 350</h6>
                         </div>
 
                         <div>
-                            <img src={featuredProd3} onClick={() => { handleChange(featuredProd3) }} alt="Image" />
+                            <img src={featuredProd3} onClick={() => { handleChange(featuredProd3,'PAR 64') }} alt="Image" />
                             <h6 className="text-center fs-4 mt-2">PAR 64</h6>
                         </div>
 
                         <div>
-                            <img src={featuredProd4} onClick={() => { handleChange(featuredProd4) }} alt="Image" />
+                            <img src={featuredProd4} onClick={() => { handleChange(featuredProd4,'PAR 200') }} alt="Image" />
                             <br />
                             <h6 className="text-center fs-4 mt-2">PAR 200</h6>
                         </div>
 
                         <div>
-                            <img src={featuredProd6} onClick={() => { handleChange(featuredProd6) }} alt="Image" />
+                            <img src={featuredProd6} onClick={() => { handleChange(featuredProd6,'Wash 300') }} alt="Image" />
                             <h6 className="text-center fs-4 mt-2">Wash 300</h6>
                         </div>
 
                         <div>
-                            <img src={featuredProd2} onClick={() => { handleChange(featuredProd2) }} alt="Image" />
+                            <img src={featuredProd2} onClick={() => { handleChange(featuredProd2,'Matrix 300') }} alt="Image" />
                             <h6 className="text-center fs-4 mt-2">Matrix 300</h6>
                         </div>
 
                         <div>
-                            <img src={featuredProd5} onClick={() => { handleChange(featuredProd5) }} alt="Image" />
+                            <img src={featuredProd5} onClick={() => { handleChange(featuredProd5,'Rainbow 350') }} alt="Image" />
                             <h6 className="text-center fs-4 mt-2">Rainbow 350</h6>
                         </div>
 
@@ -199,8 +203,8 @@ const Home = ({ homeInfo }) => {
                                 <Modal.Header closeButton>
                                 </Modal.Header>
                                 <div>
-                                    <img className="galleryImage" src={image} onClick={() => { handleChange(featuredProd2) }} alt="Image" />
-                                    <h6 className="text-center fs-4 mt-2">Product Name</h6>
+                                    <img className="galleryImage" src={image} onClick={() => { handleChange() }} alt="Image" />
+                                    <h6 className="text-center fs-4 mt-2">{name}</h6>
                                 </div>
                             </Modal.Body>
 
