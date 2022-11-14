@@ -313,10 +313,7 @@
 .gallery_container {
   background-image: url('./images//upper_banner.png');
   background-repeat: no-repeat;
-
-  background-size: 99% 400px;
-  /* w h*/
-
+  background-size: 99% 400px;/* w h*/
 }
 
 .image_gallery {
@@ -963,7 +960,7 @@ h5 {
 }
 
 
-/* **************** About Us Path in Home compoent ************* */
+/* **************** About Us  in Home compoent ************* */
 .lower{
   display: flex;
   justify-content: center;
