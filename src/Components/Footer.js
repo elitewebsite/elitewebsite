@@ -4,6 +4,7 @@ import fbIcon from '../images/facebook.png'
 import instaIcon from '../images/instagram.png'
 import linkedinIcon from '../images/linkedin.png'
 import twitterIcon from '../images/twitter.png'
+import pinterestIcon from '../images/pinterest.png'
 import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
@@ -55,11 +56,12 @@ const Footer = () => {
 
           <div className="col-lg-3 social_links">
             <h5 className='mb-3'>Follow Us @</h5>
-            <a href="#"> <img src={fbIcon} alt="" /> </a>
-            <a href="#"> <img src={instaIcon} alt="" /> </a>
-            <a href="#"> <img src={linkedinIcon} alt="" /> </a>
-            <a href="#"> <img src={twitterIcon} alt="" /> </a>
-
+            <a href="https://www.facebook.com/EliteElectricals/" target="_blank"> <img src={fbIcon} alt="Image" /> </a>
+            <a href="https://www.instagram.com/elite_electrics_/" target="_blank"> <img src={instaIcon} alt="Image" /> </a>
+            <a href="https://www.linkedin.com/company/elite-shinde-electrics/" target="_blank"> <img src={linkedinIcon} alt="Image" /> </a>
+            <a href="https://twitter.com/Elite19920401" target="_blank"> <img src={twitterIcon} alt="Image" /> </a>
+            <a href="https://in.pinterest.com/socialelite6637/" target="_blank"> <img src={pinterestIcon} alt="Image" /> </a>
+            
             <h5 className='mt-4'>All Rights Reserved</h5 >
           </div>
 
