@@ -25,7 +25,6 @@ export const Singleproduct = () => {
         }
     }, [state])
 
-    console.log(state.oneproduct)
     return (
         <>
             <Container fluid>
