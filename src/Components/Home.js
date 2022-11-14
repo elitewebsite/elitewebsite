@@ -143,7 +143,48 @@ const Home = ({ homeInfo }) => {
             </Container>
 
             {/* Featured Product section */}
-          
+            <Container className='main_slider_container mt-5 mb-5'>
+                <Row className='slider_row'>
+                    <Col>
+                        <h1 className='text-center featured_product_title' >Our Featured Products</h1>
+
+                        <Slider {...settings} className="slider_imgs">
+                            <div>
+
+                                <img src={featuredProd1} alt="image" className='img-fluid' />
+                            </div>
+
+                            <div>
+                                <img src={featuredProd2} alt="image" className='img-fluid' />
+                            </div>
+
+                            <div>
+                                <img src={featuredProd3} alt="image" className='img-fluid' />
+                            </div>
+                            <div>
+                                <img src={featuredProd4} alt="image" className='img-fluid' />
+                            </div>
+
+                            <div>
+                                <img src={featuredProd5} alt="image" className='img-fluid' />
+                            </div>
+
+                            <div>
+                                <img src={featuredProd6} alt="image" className='img-fluid' />
+                            </div>
+                        </Slider>
+
+                        <center>
+                            <button id="view_all_btn">
+                                <Link to="/">
+                                    View All
+                                </Link>
+                            </button>
+                        </center>
+
+                    </Col>
+                </Row>
+            </Container>
 
             {/* Gallery Section */}
             <Container className="gallery_container">
