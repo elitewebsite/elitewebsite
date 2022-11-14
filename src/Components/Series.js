@@ -16,10 +16,10 @@ const Series = () => {
     
     axios.get(`https://elitebackend-sage.vercel.app/admincrud/getall?mainlight=${mainlight}`).then((res) => {
       setData(res.data)
-      console.log(res.data)
+      
 
     }).catch((err) => {
-      console.log(err)
+      
     })
 
   }, [mainlight])
