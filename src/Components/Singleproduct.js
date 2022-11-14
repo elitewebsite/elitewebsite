@@ -129,7 +129,7 @@ export const Singleproduct = () => {
                                     </Tab.Pane>
 
                                     <Tab.Pane eventKey="sixth">
-                                        <a id="downloadable_pdf" href={state.oneproduct.pdflink} download target="_blank">Click Here to Download</a>
+                                        <a id="downloadable_pdf" href={state.oneproduct.pdflink} download target="_blank">Details PDF </a>
                                     </Tab.Pane>
                                 </Tab.Content>
                             </Col>

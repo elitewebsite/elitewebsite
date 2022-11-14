@@ -222,8 +222,8 @@
 }
 
 .carousel_imgs img {
-  height: 300px !important;
-  width: 250px !important;
+  /* height: 100% !important; */
+  width: 27% !important;
 }
 
 .product_desc_title {
