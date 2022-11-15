@@ -176,7 +176,7 @@ const Home = ({ homeInfo }) => {
 
                         <center>
                             <button id="view_all_btn">
-                                <Link to="/">
+                                <Link to="/gallery">
                                     View All
                                 </Link>
                             </button>
