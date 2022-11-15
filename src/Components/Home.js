@@ -244,7 +244,7 @@ const Home = ({ homeInfo }) => {
                                 <Modal.Header closeButton>
                                 </Modal.Header>
                                 <div>
-                                    <img className="galleryImage" src={image} onClick={() => { handleChange() }} alt="Image" />
+                                    <img className="galleryImage" src={image}  alt="Image" />
                                     <h6 className="text-center fs-4 mt-2">{name}</h6>
                                 </div>
                             </Modal.Body>

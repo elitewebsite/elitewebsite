@@ -22,7 +22,9 @@ function NavBar() {
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container >
                     <Navbar.Brand className="header_nav">
-                        <img src={EliteLogo} alt="Logo" height="58px" width="165px" />
+                        <Link to="/">
+                            <img src={EliteLogo} alt="Logo" height="58px" width="165px" />
+                        </Link>
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
