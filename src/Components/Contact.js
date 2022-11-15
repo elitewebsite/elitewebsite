@@ -36,7 +36,7 @@ const Contact = () => {
       </div>
       <div className="contact_cards">
 
-        <Container fluid>
+        <Container fluid >
           <Row className='gx-4 gy-3'>
             <Col sm={6} md={3}>
               <div className='contact_card' >
@@ -53,6 +53,7 @@ const Contact = () => {
                 </div>
               </div>
             </Col>
+
             <Col sm={6} md={3}>
               <div className='contact_card' >
                 <p className='title' style={{ backgroundColor: "#d8dae1", color: "black" }}>Kolhapur Branch</p>
@@ -66,6 +67,7 @@ const Contact = () => {
 
               </div>
             </Col>
+            
             <Col sm={6} md={3}>
               <div className='contact_card'>
                 <p className='title' style={{ backgroundColor: "#d8dae1", color: "black" }}>Sangli Branch</p>
@@ -76,12 +78,13 @@ const Contact = () => {
                   </p>
                   <span classname='others'>newelite1627@gmail.com
                   </span>
-                  <p className='others'> 0233 2376206 | +91 9423868970, +91 9422615370
+                  <p className='others'> 0233 2376206 | +91 9423868970 | +91 9422615370
                   </p>
                 </div>
 
               </div>
             </Col>
+
             <Col sm={6} md={3}>
               <div className='contact_card'>
 
@@ -92,7 +95,7 @@ const Contact = () => {
                   </p>
                   <span> rakesh.eliteele@gmail.com
                   </span>
-                  <p className='others'> 022 22050564 & +91 8369258669, +91 8888628880 </p>
+                  <p className='others'> 022 22050564 | +91 8369258669 | +91 8888628880 </p>
                 </div>
 
               </div>
@@ -100,13 +103,14 @@ const Contact = () => {
           </Row>
         </Container>
       </div>
-      <div className="form_and_map">
-        <ToastContainer position="bottom-left" hideProgressBar="true" autoClose="6000" />
+
+      <div className="form_and_map" >
+        <ToastContainer position="top-center" hideProgressBar="true" autoClose="6000" />
         <img src={Getbanner} alt="Image" />
         <Container fluid>
-          <Row className='gy-3'>
-            <Col sm={6}>
-              <div >
+          <Row className='gy-3 '>
+            <Col sm={5}>
+              <div>
                 <form onSubmit={handleSubmit} className="form mt-4" autocomplete="off">
                   <input type="text" name="name" placeholder='Enter your name' id="" required />
                   <input type="email" name="email" placeholder='Enter your email' id="" required />
@@ -115,7 +119,8 @@ const Contact = () => {
                 </form>
               </div>
             </Col>
-            <Col sm={6}>
+
+            <Col sm={7}>
               <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=New%20Elite%20Electricals,%201847,c,Opp%20Muttan%20Market,%20Khatik%20Chowk,,%20Kolhapur,%20Maharashtra%20Kolhapur+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href='#'>.</a>
             </Col>
           </Row>

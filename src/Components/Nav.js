@@ -22,21 +22,23 @@ function NavBar() {
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container >
                     <Navbar.Brand className="header_nav">
-                        <Link to="/">
+
+                        <Nav.Link> <Link to="/">
                             <img src={EliteLogo} alt="Logo" height="58px" width="165px" />
-                        </Link>
+                        </Link></Nav.Link>
+
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="m-auto">
-                            <Nav.Link className="pe-4 fs-5">
-                                <Link to="/"> Home </Link>
+                            <Nav.Link className="pe-4 fs-5" eventKey="1">
+                                <Link to="/" > Home </Link>
                             </Nav.Link>
 
-                            <Nav.Link className="pe-4 fs-5">
-                                <Link to="/about">
+                            <Nav.Link className="pe-4 fs-5" eventKey="2" >
+                                <Link to="/about" >
                                     About
                                 </Link>
                             </Nav.Link>
@@ -47,8 +49,9 @@ function NavBar() {
                                         return (
                                             <div className='d-flex g-4 '>
                                                 <img src={value.url} alt="Image" style={{ width: "30px", height: "30px", borderRadius: "80px", marginLeft: "9px", marginTop: "8px" }} />
-                                                <NavDropdown.Item>
-                                                    <Link id="mainlight_name" to={`/series/${value.name}`}>
+                                                <NavDropdown.Item eventKey="3">
+
+                                                    <Link id="mainlight_name" to={`/series/${value.name}`} >
                                                         {value.name}
                                                     </Link>
                                                 </NavDropdown.Item>
@@ -58,8 +61,8 @@ function NavBar() {
                                 }
                             </NavDropdown>
 
-                            <Nav.Link className="pe-4 fs-5">
-                                <Link to="/gallery">
+                            <Nav.Link className="pe-4 fs-5" eventKey="4">
+                                <Link to="/gallery" >
                                     Gallery
                                 </Link>
                             </Nav.Link>
@@ -70,8 +73,9 @@ function NavBar() {
                                 </Link>
                             </Nav.Link> */}
 
-                            <Nav.Link className="pe-4 fs-5">
-                                <Link to="/contact">
+                            <Nav.Link className="pe-4 fs-5" eventKey="5">
+
+                                <Link to="/contact" >
                                     Contact
                                 </Link>
                             </Nav.Link>
