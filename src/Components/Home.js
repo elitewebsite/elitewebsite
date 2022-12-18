@@ -1,261 +1,248 @@
-import Carousel from 'react-bootstrap/Carousel';
-import aboutUpper from '../images/upper_banner.png';
-import Slider from "react-slick"
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Slider from "react-slick";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Carousel from "react-bootstrap/Carousel";
+import Container from "react-bootstrap/Container";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Modal from "react-bootstrap/Modal";
+import { Link } from "react-router-dom";
 
-//fetured product images
-import featuredProd1 from "../images/featuredProducts/BSW350.png"
-import featuredProd2 from "../images/featuredProducts/matrix300.png"
-import featuredProd3 from "../images/featuredProducts/PAR64.png"
-import featuredProd4 from "../images/featuredProducts/PAR200.png"
-import featuredProd5 from "../images/featuredProducts/RAINBOW350.png"
-import featuredProd6 from "../images/featuredProducts/WASH300.png"
+const Home = () => {
+  const [show, setShow] = useState(false);
+  const [image, setImage] = useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [name, setName] = useState("");
+
+  const handleChange = (gimg, sname) => {
+    setImage(gimg);
+    setName(sname);
+    handleShow();
+  };
+
+  const [carouseldata, setCarouseldata] = useState([]);
+  const [featuredimg, setFeaturedimg] = useState([]);
+  const [galleryimg, setGalleryimg] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://elitebackend-sage.vercel.app/homepagecarousel/getcarouseldetails").then((res) => {
+      setCarouseldata(res.data);
+   }).catch((res) => { });
+
+    axios.get("https://elitebackend-sage.vercel.app/dynamicfeaturedproducts/getfeaturedproducts").then((res) => {
+      setFeaturedimg(res.data);
+    }).catch((err) => { });
+
+    axios.get("https://elitebackend-sage.vercel.app/dynamicgallery/getgallery").then((res) => {
+      setGalleryimg(res.data);
+    }).catch((err) => { })
+
+  }, []);
 
 
-import Modal from 'react-bootstrap/Modal'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+  // Setting for featured products carousel
+  const settings = {
+    dots: true,
+    autoplay: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 620,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
 
-const Home = ({ homeInfo }) => {
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
-    const [show, setShow] = useState(false);
-    const [image, setImage] = useState('');
+  // Setting for testimonals section
+  const settings2 = {
+    className: "center",
+    dots: true,
+    centerMode: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 3500,
+    autoplay: true,
+  };
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  return (
+    <>
+      {/* Carousel Section */}
+      <Container fluid>
+        <Row>
+          <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Carousel>
+              {carouseldata.info?.map((value, index) => {
+                return (
+                  <Carousel.Item
+                    interval={2500}
+                    className="first_Carousel_row"
+                    key={index}
+                  >
+                    <img
+                      className="d-block w-100"
+                      src={value.url}
+                      alt="Second slide"
+                    />
+                    <Carousel.Caption>
+                      <h1 id="secondLabel" className="text-capitalize">
+                        {value.title.split(",").map((myvalue, index1) => {
+                          return (
+                            <>
+                              <span>{myvalue}</span>
+                              <br />
+                            </>
+                          );
+                        })}
+                      </h1>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
+          </Col>
+        </Row>
+      </Container>
 
-    const [name, setName] = useState('');
+      {/* About Section */}
+      <Container fluid>
+        <Col>
+          <div className="about_main_div">
+            <Container className="lower">
+              <div className="lower_left"></div>
 
-    const handleChange = (gimg,sname) => {
-        setImage(gimg);
-        setName(sname);
-        handleShow();
-    }
-
-    // Setting for featured products carousel
-    const settings = {
-        dots: true,
-        autoplay: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        responsive: [
-            {
-                breakpoint: 1600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 620,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    initialSlide: 2
-                }
-            },
-
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
-    // Setting for testimonals section
-    const settings2 = {
-        className: "center",
-        dots: true,
-        centerMode: true,
-        infinite: true,
-        // centerPadding: "50px",
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplaySpeed: 3500,
-        autoplay: true
-    };
-
-    return (
-
-        <>
-            {/* Carousel Section */}
-            <Container fluid>
-                <Row>
-                    <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-                        <Carousel>
-                            {
-                                homeInfo?.map((value, index) => {
-                                    return (
-                                        <Carousel.Item interval={2500} className='first_Carousel_row'>
-                                            <img className="d-block w-100" src={value.url} alt="Second slide" />
-                                            <Carousel.Caption>
-                                                <h1 id="secondLabel" className='text-capitalize'>
-                                                    {
-                                                        value.title.split(',').map((myvalue, index1) => {
-                                                            return (
-                                                                <>
-                                                                    <span>{myvalue}</span>
-                                                                    <br />
-                                                                </>
-                                                            )
-                                                        })
-                                                    }
-                                                </h1>
-                                            </Carousel.Caption>
-                                        </Carousel.Item>
-                                    )
-                                })
-                            }
-                        </Carousel>
-                    </Col>
-                </Row>
+              <div className="lower_right">
+                <h2 className="who_title">Who we are?</h2>
+                <p>
+                  The Company brings you to the most vivid and exquisite luxury
+                  lighting series you’ve ever laid your eyes on. ELITE ELECTRIC
+                  PROLIGHT Pvt. Ltd. formerly known as New Elite Electricals.
+                  Professional event lighting manufacturer and trader.{" "}
+                </p>
+                <button className="float-end rm_button">
+                  {" "}
+                  <Link to="/about"> Read More</Link>
+                </button>
+              </div>
             </Container>
+          </div>
+        </Col>
+      </Container>
 
-            {/* About Section */}
-            <Container fluid>
-                <Col>
-                    <div className="about_main_div">
-                        <div className="upper">
-                            <img src={aboutUpper} alt="Image" />
-                        </div>
+      {/* Featured Product section */}
+      <Container className="main_slider_container mt-5 mb-5">
+        <Row className="slider_row">
+          <Col>
+            <h1 className="text-center featured_product_title">
+              Our Featured Products
+            </h1>
 
-                        <Container className="lower">
-                            <div className="lower_left"></div>
-
-                            <div className="lower_right">
-                                <h2 className="who_title">Who we are?</h2>
-                                <p>The Company brings you to the most vivid and exquisite luxury lighting series you’ve ever laid your eyes on. ELITE ELECTRIC PROLIGHT Pvt. Ltd. formerly known as New Elite Electricals. Professional event lighting manufacturer and trader. </p>
-                                <button className='float-end rm_button'> <Link to="/about"> Read More</Link></button>
-                            </div>
-
-                        </Container>
-                    </div>
-                </Col>
-            </Container>
-
-            {/* Featured Product section */}
-            <Container className='main_slider_container mt-5 mb-5'>
-                <Row className='slider_row'>
-                    <Col>
-                        <h1 className='text-center featured_product_title' >Our Featured Products</h1>
-
-                        <Slider {...settings} className="slider_imgs">
-                            <div>
-
-                                <img src={featuredProd1} alt="image" className='img-fluid' />
-                            </div>
-
-                            <div>
-                                <img src={featuredProd2} alt="image" className='img-fluid' />
-                            </div>
-
-                            <div>
-                                <img src={featuredProd3} alt="image" className='img-fluid' />
-                            </div>
-                            <div>
-                                <img src={featuredProd4} alt="image" className='img-fluid' />
-                            </div>
-
-                            <div>
-                                <img src={featuredProd5} alt="image" className='img-fluid' />
-                            </div>
-
-                            <div>
-                                <img src={featuredProd6} alt="image" className='img-fluid' />
-                            </div>
-                        </Slider>
-
-                        <center>
-                            <button id="view_all_btn">
-                                <Link to="/gallery">
-                                    View All
-                                </Link>
-                            </button>
-                        </center>
-
-                    </Col>
-                </Row>
-            </Container>
-
-            {/* Gallery Section */}
-            <Container className="gallery_container">
-                <Row>
-                    <h2 className='text-center mt-4' style={{ color: "#012e4d" }}>Gallery</h2>
-                    <div className='image_gallery mt-4'>
-                        <div>
-                            <img src={featuredProd1} onClick={() => { handleChange(featuredProd1,'BSW 350') }} alt="Image" />
-                            <h6 className="text-center fs-4 mt-2">BSW 350</h6>
-                        </div>
-
-                        <div>
-                            <img src={featuredProd3} onClick={() => { handleChange(featuredProd3,'PAR 64') }} alt="Image" />
-                            <h6 className="text-center fs-4 mt-2">PAR 64</h6>
-                        </div>
-
-                        <div>
-                            <img src={featuredProd4} onClick={() => { handleChange(featuredProd4,'PAR 200') }} alt="Image" />
-                            <br />
-                            <h6 className="text-center fs-4 mt-2">PAR 200</h6>
-                        </div>
-
-                        <div>
-                            <img src={featuredProd6} onClick={() => { handleChange(featuredProd6,'Wash 300') }} alt="Image" />
-                            <h6 className="text-center fs-4 mt-2">Wash 300</h6>
-                        </div>
-
-                        <div>
-                            <img src={featuredProd2} onClick={() => { handleChange(featuredProd2,'Matrix 300') }} alt="Image" />
-                            <h6 className="text-center fs-4 mt-2">Matrix 300</h6>
-                        </div>
-
-                        <div>
-                            <img src={featuredProd5} onClick={() => { handleChange(featuredProd5,'Rainbow 350') }} alt="Image" />
-                            <h6 className="text-center fs-4 mt-2">Rainbow 350</h6>
-                        </div>
-
-                    </div>
+            <Slider {...settings} className="slider_imgs">
+              {featuredimg?.map((val, ind) => {
+                return (
+                  <div>
                     <center>
-                        <button id="see_more_btn">
-                            <Link to="/gallery">
-                                See More
-                            </Link>
-                        </button>
+                      <Link to="/mainlightcategories">
+                        <img
+                          src={val.image.url}
+                          alt="image"
+                          className="img-fluid"
+                        />
+
+                        <h4 className="featured_title mt-4 mb-3 text-center">
+                          {val.name}
+                        </h4>
+                      </Link>
+
+
                     </center>
-                </Row>
-            </Container>
 
-            <Container>
-                <Row>
-                    <Col lg={6} sm={6}>
-                        <Modal show={show}
-                            onHide={handleClose}
-                            backdrop="static"
-                            keyboard={false}>
-                            <Modal.Body>
-                                <Modal.Header closeButton>
-                                </Modal.Header>
-                                <div>
-                                    <img className="galleryImage" src={image}  alt="Image" />
-                                    <h6 className="text-center fs-4 mt-2">{name}</h6>
-                                </div>
-                            </Modal.Body>
 
-                        </Modal>
-                    </Col>
-                </Row>
-            </Container>
+                  </div>
+                );
+              })}
+            </Slider>
+          </Col>
+        </Row>
+      </Container>
 
-            {/* Testimonial Section */}
-            {/* <Container className="testimonial_container">
+      {/* Gallery Section */}
+      <Container className="gallery_container">
+        <Row>
+          <h2 className="text-center mt-4" style={{ color: "#012e4d" }}> Gallery </h2>
+
+          <div className="image_gallery mt-4 ">
+            {
+              galleryimg?.map((val, indx) => {
+                return (
+                  <div >
+                    <img src={val.image.url} onClick={() => { handleChange(val.image.url, val.eventName); }} alt="Image" className="img-fluid" />
+                    <h6 className="text-center fs-4 mt-2 text-capitalize">{val.eventName}</h6>
+                  </div>
+                )
+              })
+            }
+          </div>
+
+          <center>
+            <button id="see_more_btn">
+              <Link to="/gallery">See More</Link>
+            </button>
+          </center>
+
+        </Row>
+      </Container>
+
+      <Container>
+        <Row>
+          <Col lg={6} sm={6}>
+            <Modal
+              show={show}
+              onHide={handleClose}
+              backdrop="static"
+              keyboard={false}
+            >
+              <Modal.Body>
+                <Modal.Header closeButton></Modal.Header>
+                <div>
+                  <img className="galleryImage" src={image} alt="Image" />
+                  <h6 className="text-center fs-4 mt-2 text-capitalize">{name}</h6>
+                </div>
+              </Modal.Body>
+            </Modal>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* Testimonial Section */}
+      {/* <Container className="testimonial_container">
                 <Row className="justify-content-center">
                     <Col lg={12} md={10} sm={10} >
                         <h2 className='testimonial_title'>Testimonials</h2>
@@ -286,8 +273,8 @@ const Home = ({ homeInfo }) => {
                     </Col>
                 </Row>
             </Container> */}
-        </>
-    );
-}
+    </>
+  );
+};
 
 export default Home;

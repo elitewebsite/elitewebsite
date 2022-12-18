@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import mainlightBanner from '../images/mainlightBanner.png'
-import seriesBanner from '../images/product_banner.png'
+import leftBtn from '../images/left.png'
 
 const Series = () => {
-  const { mainlight } = useParams()
-
+  const { mainlight } = useParams();
+  const navigate = useNavigate();
   const [data, setData] = useState([])
-  console.log(mainlight)
+
   useEffect(() => {
-    
+
     axios.get(`https://elitebackend-sage.vercel.app/admincrud/getall?mainlight=${mainlight}`).then((res) => {
       setData(res.data)
-      
-
     }).catch((err) => {
-      
+
     })
 
   }, [mainlight])
@@ -27,16 +24,16 @@ const Series = () => {
   return (
     <>
       <div>
+        <div className="backBtn" onClick={() => { navigate(-1) }}>
+          <img src={leftBtn} alt="Image" className='mb-2' /> <span className='fs-5 fw-bold back_text'>Previous Page</span>
+        </div>
+
         <Container fluid>
           <Row>
-            <Col className="mainLight_banner">
-              <img src={mainlightBanner} alt="Image" className="img-fluid" />
-              <h1 className='mainLight_title '> {mainlight} </h1>
+            <Col>
+              {/* <img src={backBtn} onClick={() => { navigate(-1) }} alt="" className='mt-2' /> */}
+              <h1 className='text-center mt-5 mb-5 fw-bold'> {mainlight} </h1>
             </Col>
-          </Row>
-
-          <Row>
-            <img src={seriesBanner} alt="Image" />
           </Row>
         </Container>
 
@@ -45,7 +42,7 @@ const Series = () => {
             {
               data?.map((value, index) => {
                 return (
-                  <Col lg={3} sm={6} xs={6} className="individual_Series mt-3 mb-5">
+                  <Col key={index} lg={3} md={3} sm={6} xs={12} className="individual_Series mt-3 mb-5" style={{ order: `${value.sequence_no}`, paddingTop: '18px', paddingBottom: '18px' }}>
                     <Link to="/products" state={{ products: value.products, series_name: value.series }}>
                       <center>
                         <img src={value.url} alt="Iamge" className='img-fluid' />
