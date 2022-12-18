@@ -25,12 +25,12 @@ const About = () => {
                 {/* Title 1 Content */}
                 <Container fluid>
                   <Row className={`about_lower_content${ind} g-3`}>
-                    <Col xs={12} sm={6} md={6} lg={6} className="about_lower_content_col">
+                    <Col xs={12} sm={6} md={6} lg={6}>
                       <img src={val.image.url} alt="Image" width="100%"  />
                     </Col>
 
-                    <Col xs={12} sm={6} md={6} lg={6} className="about_lower_content_p" >
-                      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <Col xs={12} sm={6} md={6} lg={6} className="about_lower_content_col">
+                      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent:"center" }}>
                         <p className="about-title">{val.title}</p>
                         <p className="mt-3 about-description" style={{ textAlign: "justify" }}> {val.content} </p>
                       </div>
