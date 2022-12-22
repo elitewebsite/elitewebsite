@@ -59,12 +59,12 @@ const Contact = () => {
       <div className="contact_cards">
         <Container fluid>
           <h2 className='text-center mt-3 fw-bold' style={{ marginBottom: "50px" }}>Reach Us At</h2>
-          <Row className='gx-4 gy-3'>
+          <Row className='gx-4'>
 
             {
               branchdata?.map((val, index) => {
                 return (
-                  <Col sm={6} md={6} lg={3} xl={3} style={{ order: `${val.sequence_no}`,margin:"3px" }}>
+                  <Col sm={6} md={6} lg={3} xl={3} style={{ order: `${val.sequence_no}`}}>
                     <div className='contact_card' >
                       <p className='title pt-1' style={{ backgroundColor: `${val.branch_city == "Head Office" ? "#fde7dc" : "#bbbec0"}`, color: "black" }}>{val.branch_city}</p>
                       <div className="lower_details">

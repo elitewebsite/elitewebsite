@@ -37,7 +37,7 @@ const Products = () => {
             </Container>
 
             <Container>
-                <Row>
+                <Row className=''>
                     {
                         state?.products?.map((val, idx) => {
                             return (

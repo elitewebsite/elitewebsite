@@ -38,7 +38,7 @@ const Series = () => {
         </Container>
 
         <Container>
-          <Row>
+          <Row className=''>
             {
               data?.map((value, index) => {
                 return (
