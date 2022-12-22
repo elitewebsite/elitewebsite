@@ -8,6 +8,7 @@ a {
 
 }
 
+
 * {
   padding: 0;
   margin: 0;
@@ -90,8 +91,9 @@ a {
   }
 }
 
-/* .inner_tags :hover{
-  background:none;
+/* #mainlight_name :hover{
+  background: white;
+
 } */
 
 .featured_title::before {
@@ -173,7 +175,7 @@ a {
   content: '';
   display: block;
   border-top: 2px solid #ffb400;
-  width: 98%;
+  width: 99%;
   margin-top: 8px;
 }
 
@@ -204,7 +206,6 @@ a {
     margin-top: 3%;
     margin-left: 12%;
     margin-bottom: 8px;
-
   }
 }
 
@@ -221,10 +222,6 @@ a {
   content: '';
   display: block;
   border-top: 2px solid #ffb400;
-  
-  margin-top: 3%;
-  margin-left: 12%;
-  margin-bottom: 8px;
 }
 
 .individual_products:hover {
